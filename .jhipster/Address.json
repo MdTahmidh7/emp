@@ -1,0 +1,30 @@
+{
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "houseNo",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "roadNo",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "block",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "section",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "division",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}
