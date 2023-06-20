@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-address-heading" data-cy="AddressCreateUpdateHeading" jhiTranslate="employeeManagementApp.address.home.createOrEditLabel">
+        Create or edit a Address
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.address.houseNo" for="field_houseNo">House No</label>
+          <input type="number" class="form-control" name="houseNo" id="field_houseNo" data-cy="houseNo" formControlName="houseNo" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.address.roadNo" for="field_roadNo">Road No</label>
+          <input type="number" class="form-control" name="roadNo" id="field_roadNo" data-cy="roadNo" formControlName="roadNo" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.address.block" for="field_block">Block</label>
+          <input type="text" class="form-control" name="block" id="field_block" data-cy="block" formControlName="block" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.address.section" for="field_section">Section</label>
+          <input type="number" class="form-control" name="section" id="field_section" data-cy="section" formControlName="section" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.address.division" for="field_division">Division</label>
+          <input type="text" class="form-control" name="division" id="field_division" data-cy="division" formControlName="division" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

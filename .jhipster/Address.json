@@ -1,5 +1,7 @@
 {
+  "changelogDate": "20230620095603",
   "dto": "mapstruct",
+  "entityTableName": "address",
   "fields": [
     {
       "fieldName": "houseNo",
@@ -23,8 +25,10 @@
     }
   ],
   "jpaMetamodelFiltering": false,
+  "name": "Address",
   "pagination": "infinite-scroll",
   "readOnly": false,
   "relationships": [],
+  "searchEngine": "no",
   "service": "serviceImpl"
 }
