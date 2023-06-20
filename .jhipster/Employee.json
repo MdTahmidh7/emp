@@ -1,5 +1,7 @@
 {
+  "changelogDate": "20230620102241",
   "dto": "mapstruct",
+  "entityTableName": "employee",
   "fields": [
     {
       "fieldName": "empName",
@@ -41,6 +43,7 @@
     }
   ],
   "jpaMetamodelFiltering": false,
+  "name": "Employee",
   "pagination": "infinite-scroll",
   "readOnly": false,
   "relationships": [
@@ -48,8 +51,10 @@
       "otherEntityField": "id",
       "otherEntityName": "address",
       "relationshipName": "employeeAddress",
+      "relationshipSide": "left",
       "relationshipType": "many-to-one"
     }
   ],
+  "searchEngine": "no",
   "service": "serviceImpl"
 }

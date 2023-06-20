@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="employee">
+      <h2 data-cy="employeeDetailsHeading"><span jhiTranslate="employeeManagementApp.employee.detail.title">Employee</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ employee.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="employeeManagementApp.employee.empName">Emp Name</span></dt>
+        <dd>
+          <span>{{ employee.empName }}</span>
+        </dd>
+        <dt><span jhiTranslate="employeeManagementApp.employee.empAge">Emp Age</span></dt>
+        <dd>
+          <span>{{ employee.empAge }}</span>
+        </dd>
+        <dt><span jhiTranslate="employeeManagementApp.employee.empMobile">Emp Mobile</span></dt>
+        <dd>
+          <span>{{ employee.empMobile }}</span>
+        </dd>
+        <dt><span jhiTranslate="employeeManagementApp.employee.empBirthDate">Emp Birth Date</span></dt>
+        <dd>
+          <span>{{ employee.empBirthDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="employeeManagementApp.employee.empGender">Emp Gender</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'employeeManagementApp.gender.' + employee.empGender }}">{{ employee.empGender }}</span>
+        </dd>
+        <dt><span jhiTranslate="employeeManagementApp.employee.empPersonalBusiness">Emp Personal Business</span></dt>
+        <dd>
+          <span>{{ employee.empPersonalBusiness }}</span>
+        </dd>
+        <dt><span jhiTranslate="employeeManagementApp.employee.empMaritalStatus">Emp Marital Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'employeeManagementApp.maritalStatus.' + employee.empMaritalStatus }}">{{
+            employee.empMaritalStatus
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="employeeManagementApp.employee.empExperience">Emp Experience</span></dt>
+        <dd>
+          <span>{{ employee.empExperience | duration }} ({{ employee.empExperience }})</span>
+        </dd>
+        <dt><span jhiTranslate="employeeManagementApp.employee.empNationality">Emp Nationality</span></dt>
+        <dd>
+          <span>{{ employee.empNationality }}</span>
+        </dd>
+        <dt><span jhiTranslate="employeeManagementApp.employee.employeeAddress">Employee Address</span></dt>
+        <dd>
+          <div *ngIf="employee.employeeAddress">
+            <a [routerLink]="['/address', employee.employeeAddress.id, 'view']">{{ employee.employeeAddress.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/employee', employee.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-employee-heading"
+        data-cy="EmployeeCreateUpdateHeading"
+        jhiTranslate="employeeManagementApp.employee.home.createOrEditLabel"
+      >
+        Create or edit a Employee
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.employee.empName" for="field_empName">Emp Name</label>
+          <input type="text" class="form-control" name="empName" id="field_empName" data-cy="empName" formControlName="empName" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.employee.empAge" for="field_empAge">Emp Age</label>
+          <input type="number" class="form-control" name="empAge" id="field_empAge" data-cy="empAge" formControlName="empAge" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.employee.empMobile" for="field_empMobile">Emp Mobile</label>
+          <input type="text" class="form-control" name="empMobile" id="field_empMobile" data-cy="empMobile" formControlName="empMobile" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.employee.empBirthDate" for="field_empBirthDate"
+            >Emp Birth Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_empBirthDate"
+              data-cy="empBirthDate"
+              type="text"
+              class="form-control"
+              name="empBirthDate"
+              ngbDatepicker
+              #empBirthDateDp="ngbDatepicker"
+              formControlName="empBirthDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="empBirthDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.employee.empGender" for="field_empGender">Emp Gender</label>
+          <select class="form-control" name="empGender" formControlName="empGender" id="field_empGender" data-cy="empGender">
+            <option [ngValue]="null">{{ 'employeeManagementApp.gender.null' | translate }}</option>
+            <option *ngFor="let gender of genderValues" [value]="gender">{{ 'employeeManagementApp.gender.' + gender | translate }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.employee.empPersonalBusiness" for="field_empPersonalBusiness"
+            >Emp Personal Business</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="empPersonalBusiness"
+            id="field_empPersonalBusiness"
+            data-cy="empPersonalBusiness"
+            formControlName="empPersonalBusiness"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.employee.empMaritalStatus" for="field_empMaritalStatus"
+            >Emp Marital Status</label
+          >
+          <select
+            class="form-control"
+            name="empMaritalStatus"
+            formControlName="empMaritalStatus"
+            id="field_empMaritalStatus"
+            data-cy="empMaritalStatus"
+          >
+            <option [ngValue]="null">{{ 'employeeManagementApp.maritalStatus.null' | translate }}</option>
+            <option *ngFor="let maritalStatus of maritalStatusValues" [value]="maritalStatus">
+              {{ 'employeeManagementApp.maritalStatus.' + maritalStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.employee.empExperience" for="field_empExperience"
+            >Emp Experience</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="empExperience"
+            id="field_empExperience"
+            data-cy="empExperience"
+            formControlName="empExperience"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.employee.empNationality" for="field_empNationality"
+            >Emp Nationality</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="empNationality"
+            id="field_empNationality"
+            data-cy="empNationality"
+            formControlName="empNationality"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="employeeManagementApp.employee.employeeAddress" for="field_employeeAddress"
+            >Employee Address</label
+          >
+          <select
+            class="form-control"
+            id="field_employeeAddress"
+            data-cy="employeeAddress"
+            name="employeeAddress"
+            formControlName="employeeAddress"
+            [compareWith]="compareAddress"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="addressOption" *ngFor="let addressOption of addressesSharedCollection">{{ addressOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

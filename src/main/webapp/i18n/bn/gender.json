@@ -1,0 +1,9 @@
+{
+  "employeeManagementApp": {
+    "gender": {
+      "null": "",
+      "MALE": "MALE",
+      "FEMALE": "FEMALE"
+    }
+  }
+}

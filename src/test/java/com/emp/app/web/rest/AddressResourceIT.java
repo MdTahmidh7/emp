@@ -304,7 +304,7 @@ class AddressResourceIT {
         Address partialUpdatedAddress = new Address();
         partialUpdatedAddress.setId(address.getId());
 
-        partialUpdatedAddress.houseNo(UPDATED_HOUSE_NO).roadNo(UPDATED_ROAD_NO).block(UPDATED_BLOCK);
+        partialUpdatedAddress.houseNo(UPDATED_HOUSE_NO).block(UPDATED_BLOCK).division(UPDATED_DIVISION);
 
         restAddressMockMvc
             .perform(
@@ -319,10 +319,10 @@ class AddressResourceIT {
         assertThat(addressList).hasSize(databaseSizeBeforeUpdate);
         Address testAddress = addressList.get(addressList.size() - 1);
         assertThat(testAddress.getHouseNo()).isEqualTo(UPDATED_HOUSE_NO);
-        assertThat(testAddress.getRoadNo()).isEqualTo(UPDATED_ROAD_NO);
+        assertThat(testAddress.getRoadNo()).isEqualTo(DEFAULT_ROAD_NO);
         assertThat(testAddress.getBlock()).isEqualTo(UPDATED_BLOCK);
         assertThat(testAddress.getSection()).isEqualTo(DEFAULT_SECTION);
-        assertThat(testAddress.getDivision()).isEqualTo(DEFAULT_DIVISION);
+        assertThat(testAddress.getDivision()).isEqualTo(UPDATED_DIVISION);
     }
 
     @Test

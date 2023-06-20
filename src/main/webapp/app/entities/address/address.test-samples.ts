@@ -1,20 +1,22 @@
 import { IAddress, NewAddress } from './address.model';
 
 export const sampleWithRequiredData: IAddress = {
-  id: 57999,
+  id: 12904,
 };
 
 export const sampleWithPartialData: IAddress = {
-  id: 7649,
+  id: 90906,
+  roadNo: 37815,
+  division: 'violet since',
 };
 
 export const sampleWithFullData: IAddress = {
-  id: 60253,
-  houseNo: 84840,
-  roadNo: 27107,
-  block: 'set override Market',
-  section: 33845,
-  division: 'unbearably Table than',
+  id: 25880,
+  houseNo: 39147,
+  roadNo: 40137,
+  block: 'Incredible delectus',
+  section: 95350,
+  division: 'Towne yellow override',
 };
 
 export const sampleWithNewData: NewAddress = {

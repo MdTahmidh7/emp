@@ -1,0 +1,9 @@
+{
+  "employeeManagementApp": {
+    "maritalStatus": {
+      "null": "",
+      "MARRIED": "MARRIED",
+      "UNMARRIED": "UNMARRIED"
+    }
+  }
+}
