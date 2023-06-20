@@ -1,0 +1,55 @@
+{
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "empName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "empAge",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "empMobile",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "empBirthDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "empGender",
+      "fieldType": "gender",
+      "fieldValues": "MALE,FEMALE"
+    },
+    {
+      "fieldName": "empPersonalBusiness",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "empMaritalStatus",
+      "fieldType": "maritalStatus",
+      "fieldValues": "MARRIED,UNMARRIED"
+    },
+    {
+      "fieldName": "empExperience",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "empNationality",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "address",
+      "relationshipName": "employeeAddress",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
