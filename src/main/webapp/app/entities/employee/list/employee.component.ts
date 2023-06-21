@@ -187,4 +187,10 @@ export class EmployeeComponent implements OnInit {
       return [predicate + ',' + ascendingQueryParam];
     }
   }
+  inputQuery: string="";
+
+  takingQuery(){
+    // this.inputQuery = inputQuery;
+
+  }
 }

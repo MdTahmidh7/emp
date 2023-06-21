@@ -1,5 +1,6 @@
 package com.emp.app.service;
 
+import com.emp.app.domain.Employee;
 import com.emp.app.service.dto.EmployeeDTO;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -55,4 +56,6 @@ public interface EmployeeService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    Page<Employee> searchEmployee(String query, int pageNumber, int pageSize, String sortBy, String sortDirection);
 }

@@ -9,7 +9,9 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,6 +49,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeMapper.toDto(employee);
     }
 
+
+
     @Override
     public Optional<EmployeeDTO> partialUpdate(EmployeeDTO employeeDTO) {
         log.debug("Request to partially update Employee : {}", employeeDTO);
@@ -80,5 +84,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void delete(Long id) {
         log.debug("Request to delete Employee : {}", id);
         employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<Employee> searchEmployee(String query, int pageNumber, int pageSize,String sortBy, String sortDirection) {
+
+        Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+
+        return employeeRepository.searchEmployee(query,pageable);
     }
 }

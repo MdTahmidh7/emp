@@ -1,5 +1,6 @@
 package com.emp.app.web.rest;
 
+import com.emp.app.domain.Employee;
 import com.emp.app.repository.EmployeeRepository;
 import com.emp.app.service.EmployeeService;
 import com.emp.app.service.dto.EmployeeDTO;
@@ -178,4 +179,19 @@ public class EmployeeResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+
+
+    @GetMapping("/employee/search")
+    public ResponseEntity<Page<Employee>> searchEmployee(
+        @RequestParam("query") String query,
+        @RequestParam(value = "page",defaultValue = "0") int page,
+        @RequestParam(value = "size",defaultValue = "10") int size,
+        @RequestParam(value = "name", defaultValue = "name") String sortBy,
+        @RequestParam(value = "asc", defaultValue = "asc") String sortDirection
+    )
+    {
+        Page<Employee> employees= this.employeeService.searchEmployee(query,page,size,sortBy, sortDirection);
+        return ResponseEntity.ok(employees);
+    }
+
 }
