@@ -87,11 +87,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Page<Employee> searchEmployee(String query, int pageNumber, int pageSize,String sortBy, String sortDirection) {
-
-        Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
-
-        return employeeRepository.searchEmployee(query,pageable);
+    public Page<EmployeeDTO> searchEmployee(String query, Pageable pageable) {
+        return employeeRepository.searchEmployee(query, pageable).map(employeeMapper::toDto);
     }
 }

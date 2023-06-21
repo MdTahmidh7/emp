@@ -1,6 +1,4 @@
 package com.emp.app.web.rest;
-
-import com.emp.app.domain.Employee;
 import com.emp.app.repository.EmployeeRepository;
 import com.emp.app.service.EmployeeService;
 import com.emp.app.service.dto.EmployeeDTO;
@@ -16,7 +14,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -89,11 +86,9 @@ public class EmployeeResource {
         if (!Objects.equals(id, employeeDTO.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
-
         if (!employeeRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
-
         EmployeeDTO result = employeeService.update(employeeDTO);
         return ResponseEntity
             .ok()
@@ -144,12 +139,23 @@ public class EmployeeResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of employees in body.
      */
     @GetMapping("/employees")
-    public ResponseEntity<List<EmployeeDTO>> getAllEmployees(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
+    public ResponseEntity<List<EmployeeDTO>> getAllEmployees(
+        @RequestParam(value = "search", defaultValue = "") String nameSearch,
+        Pageable pageable) {
+
         log.debug("REST request to get a page of Employees");
-        Page<EmployeeDTO> page = employeeService.findAll(pageable);
+        log.debug("Getting name:"+nameSearch);
+
+        Page<EmployeeDTO> page = nameSearch.equals("")?
+            employeeService.findAll(pageable) : employeeService.searchEmployee(nameSearch, pageable);
+
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
+
+
+
+
 
     /**
      * {@code GET  /employees/:id} : get the "id" employee.
@@ -181,17 +187,5 @@ public class EmployeeResource {
     }
 
 
-    @GetMapping("/employee/search")
-    public ResponseEntity<Page<Employee>> searchEmployee(
-        @RequestParam("query") String query,
-        @RequestParam(value = "page",defaultValue = "0") int page,
-        @RequestParam(value = "size",defaultValue = "10") int size,
-        @RequestParam(value = "name", defaultValue = "name") String sortBy,
-        @RequestParam(value = "asc", defaultValue = "asc") String sortDirection
-    )
-    {
-        Page<Employee> employees= this.employeeService.searchEmployee(query,page,size,sortBy, sortDirection);
-        return ResponseEntity.ok(employees);
-    }
 
 }

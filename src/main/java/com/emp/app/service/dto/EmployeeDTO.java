@@ -13,6 +13,8 @@ import java.util.Objects;
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class EmployeeDTO implements Serializable {
 
+
+
     private Long id;
 
     private String empName;

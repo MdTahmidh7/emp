@@ -40,6 +40,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   ],
 })
 export class EmployeeComponent implements OnInit {
+
+  inputQuery: string="";
+
   employees?: IEmployee[];
   isLoading = false;
 
@@ -159,6 +162,7 @@ export class EmployeeComponent implements OnInit {
     this.isLoading = true;
     const pageToLoad: number = page ?? 1;
     const queryObject: any = {
+      search : this.inputQuery,
       page: pageToLoad - 1,
       size: this.itemsPerPage,
       sort: this.getSortQueryParam(predicate, ascending),
@@ -187,7 +191,7 @@ export class EmployeeComponent implements OnInit {
       return [predicate + ',' + ascendingQueryParam];
     }
   }
-  inputQuery: string="";
+
 
   takingQuery(){
     // this.inputQuery = inputQuery;

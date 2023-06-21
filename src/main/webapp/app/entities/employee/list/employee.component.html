@@ -3,11 +3,13 @@
     <span jhiTranslate="employeeManagementApp.employee.home.title">Employees</span>
 
     <!--Search -->
-    <div class="search-container my-4" style="position: relative">
+    <div class="search-container my-4 d-flex " style="position: relative">
 
-      <input [(ngModel)]="inputQuery" id="search-input" class="form-control" type="text" placeholder="Search here">
-      {{inputQuery}}
-      <button class="btn btn-primary btn-sm"  (click)="takingQuery()"> Search </button>
+      <div>
+        <input [(ngModel)]="inputQuery" id="search-input" class="form-control" type="text" placeholder="Search here">
+      </div>
+
+      <button class="btn btn-primary btn-sm mt-3"  (click)="load()"> Search </button>
 
       <div class="search-result"
            style="
@@ -17,10 +19,8 @@
            padding: 10%;
            border: 1px solid grey;
            display: none;
-
           ">
           <!--  Result goes here         -->
-
       </div>
 
     </div>
@@ -163,19 +163,6 @@
                 <fa-icon icon="eye"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
               </button>
-
-
-              <button
-                type="submit"
-                [routerLink]="['/employee', employee.id, 'view']"
-                class="btn btn-success btn-sm p-3"
-                data-cy="entityDetailsButton"
-              >
-                <fa-icon icon="search"></fa-icon>
-                <span class="d-none d-md-inline" >search</span>
-              </button>
-
-
 
               <button
                 type="submit"
