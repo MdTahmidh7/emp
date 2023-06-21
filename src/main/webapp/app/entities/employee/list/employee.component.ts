@@ -16,6 +16,8 @@ import { EntityArrayResponseType, EmployeeService } from '../service/employee.se
 import { EmployeeDeleteDialogComponent } from '../delete/employee-delete-dialog.component';
 import { ParseLinks } from 'app/core/util/parse-links.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+//import FormatMediumDatePipe from "../../../shared/date/format-medium-date.pipe";
+//import DurationPipe from "../../../shared/date/duration.pipe";
 
 @Component({
   standalone: true,
@@ -31,6 +33,10 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     FormatMediumDatetimePipe,
     FormatMediumDatePipe,
     InfiniteScrollModule,
+    FormatMediumDatePipe,
+    FormatMediumDatePipe,
+    DurationPipe,
+    DurationPipe,
   ],
 })
 export class EmployeeComponent implements OnInit {

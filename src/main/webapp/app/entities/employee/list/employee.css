@@ -1,0 +1,12 @@
+body{
+  background: #343a40;
+}
+h2{
+  color: #6d1f94;
+}
+.search-container{
+  background-color: black;
+}
+.search-result{
+  position:absolute;background-color: #cfefbe
+}

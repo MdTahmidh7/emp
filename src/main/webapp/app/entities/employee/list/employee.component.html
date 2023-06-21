@@ -2,8 +2,34 @@
   <h2 id="page-heading" data-cy="EmployeeHeading">
     <span jhiTranslate="employeeManagementApp.employee.home.title">Employees</span>
 
+    <!--Search -->
+    <div class="search-container my-4" style="position: relative">
+
+      <input id="search-input" class="form-control" type="text" placeholder="Search here">
+
+      <div class="search-result" style="">
+        search result
+        <p>
+          Contrary to popular belief, Lorem Ipsum is not simply random text.
+          It has roots in a piece of classical Latin literature from 45 BC, making i
+          t over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney C
+          ollege in Virginia, looked up one of the more obscure Latin words, consectetur,
+          from a Lorem Ipsum passage, and going through the cites of the word in classical
+          literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.
+          10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil)
+          by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+          popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor
+          sit amet..", comes from a line in section 1.10.32.
+        </p>
+
+      </div>
+
+    </div>
+
     <div class="d-flex justify-content-end">
-      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading"
+      style="background: #174cb7; color: white"
+      >
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="employeeManagementApp.employee.home.refreshListLabel">Refresh list</span>
       </button>
@@ -11,8 +37,9 @@
       <button
         id="jh-create-entity"
         data-cy="entityCreateButton"
-        class="btn btn-primary jh-create-entity create-employee"
+        class="btn jh-create-entity create-employee btn-primary"
         [routerLink]="['/employee/new']"
+        style="background: #058d04; color: white"
       >
         <fa-icon icon="plus"></fa-icon>
         <span jhiTranslate="employeeManagementApp.employee.home.createLabel"> Create a new Employee </span>
@@ -29,39 +56,40 @@
   </div>
 
   <div class="table-responsive table-entities" id="entities" *ngIf="employees && employees.length > 0">
-    <table class="table table-striped" aria-describedby="page-heading">
+    <table class="table table-striped" aria-describedby="page-heading"
+    >
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+          <!--<th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
+          </th>-->
           <th scope="col" jhiSortBy="empName">
             <div class="d-flex">
               <span jhiTranslate="employeeManagementApp.employee.empName">Emp Name</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="empAge">
-            <div class="d-flex">
-              <span jhiTranslate="employeeManagementApp.employee.empAge">Emp Age</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="empMobile">
-            <div class="d-flex">
-              <span jhiTranslate="employeeManagementApp.employee.empMobile">Emp Mobile</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="empBirthDate">
-            <div class="d-flex">
-              <span jhiTranslate="employeeManagementApp.employee.empBirthDate">Emp Birth Date</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
+<!--          <th scope="col" jhiSortBy="empAge">-->
+<!--            <div class="d-flex">-->
+<!--              <span jhiTranslate="employeeManagementApp.employee.empAge">Emp Age</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
+<!--          <th scope="col" jhiSortBy="empMobile">-->
+<!--            <div class="d-flex">-->
+<!--              <span jhiTranslate="employeeManagementApp.employee.empMobile">Emp Mobile</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
+<!--          <th scope="col" jhiSortBy="empBirthDate">-->
+<!--            <div class="d-flex">-->
+<!--              <span jhiTranslate="employeeManagementApp.employee.empBirthDate">Emp Birth Date</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
           <th scope="col" jhiSortBy="empGender">
             <div class="d-flex">
               <span jhiTranslate="employeeManagementApp.employee.empGender">Emp Gender</span>
@@ -80,18 +108,18 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="empExperience">
-            <div class="d-flex">
-              <span jhiTranslate="employeeManagementApp.employee.empExperience">Emp Experience</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="empNationality">
-            <div class="d-flex">
-              <span jhiTranslate="employeeManagementApp.employee.empNationality">Emp Nationality</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
+<!--          <th scope="col" jhiSortBy="empExperience">-->
+<!--            <div class="d-flex">-->
+<!--              <span jhiTranslate="employeeManagementApp.employee.empExperience">Emp Experience</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
+<!--          <th scope="col" jhiSortBy="empNationality">-->
+<!--            <div class="d-flex">-->
+<!--              <span jhiTranslate="employeeManagementApp.employee.empNationality">Emp Nationality</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
           <th scope="col" jhiSortBy="employeeAddress.id">
             <div class="d-flex">
               <span jhiTranslate="employeeManagementApp.employee.employeeAddress">Employee Address</span>
@@ -108,18 +136,18 @@
         [infiniteScrollDistance]="0"
       >
         <tr *ngFor="let employee of employees; trackBy: trackId" data-cy="entityTable">
-          <td>
-            <a [routerLink]="['/employee', employee.id, 'view']">{{ employee.id }}</a>
-          </td>
+<!--          <td>-->
+<!--            <a [routerLink]="['/employee', employee.id, 'view']">{{ employee.id }}</a>-->
+<!--          </td>-->
           <td>{{ employee.empName }}</td>
-          <td>{{ employee.empAge }}</td>
-          <td>{{ employee.empMobile }}</td>
-          <td>{{ employee.empBirthDate | formatMediumDate }}</td>
+<!--          <td>{{ employee.empAge }}</td>-->
+<!--          <td>{{ employee.empMobile }}</td>-->
+<!--          <td>{{ employee.empBirthDate | formatMediumDate }}</td>-->
           <td jhiTranslate="{{ 'employeeManagementApp.gender.' + employee.empGender }}">{{ employee.empGender }}</td>
           <td>{{ employee.empPersonalBusiness }}</td>
           <td jhiTranslate="{{ 'employeeManagementApp.maritalStatus.' + employee.empMaritalStatus }}">{{ employee.empMaritalStatus }}</td>
-          <td title="{{ employee.empExperience }}">{{ employee.empExperience | duration }}</td>
-          <td>{{ employee.empNationality }}</td>
+<!--          <td title="{{ employee.empExperience }}">{{ employee.empExperience | duration }}</td>-->
+<!--          <td>{{ employee.empNationality }}</td>-->
           <td>
             <div *ngIf="employee.employeeAddress">
               <a [routerLink]="['/address', employee.employeeAddress.id, 'view']">{{ employee.employeeAddress.id }}</a>
@@ -130,7 +158,7 @@
               <button
                 type="submit"
                 [routerLink]="['/employee', employee.id, 'view']"
-                class="btn btn-info btn-sm"
+                class="btn btn-info btn-sm p-3"
                 data-cy="entityDetailsButton"
               >
                 <fa-icon icon="eye"></fa-icon>

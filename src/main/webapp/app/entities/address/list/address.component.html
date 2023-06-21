@@ -32,12 +32,12 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
-            <div class="d-flex">
-              <span jhiTranslate="global.field.id">ID</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
+<!--          <th scope="col" jhiSortBy="id">-->
+<!--            <div class="d-flex">-->
+<!--              <span jhiTranslate="global.field.id">ID</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
           <th scope="col" jhiSortBy="houseNo">
             <div class="d-flex">
               <span jhiTranslate="employeeManagementApp.address.houseNo">House No</span>
@@ -78,9 +78,9 @@
         [infiniteScrollDistance]="0"
       >
         <tr *ngFor="let address of addresses; trackBy: trackId" data-cy="entityTable">
-          <td>
-            <a [routerLink]="['/address', address.id, 'view']">{{ address.id }}</a>
-          </td>
+<!--          <td>-->
+<!--            <a [routerLink]="['/address', address.id, 'view']">{{ address.id }}</a>-->
+<!--          </td>-->
           <td>{{ address.houseNo }}</td>
           <td>{{ address.roadNo }}</td>
           <td>{{ address.block }}</td>
